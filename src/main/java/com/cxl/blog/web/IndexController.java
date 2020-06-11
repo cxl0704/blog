@@ -8,7 +8,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        int i =9/0;     //主动注入500错误异常
+//        int i =9/0;     //主动注入500错误异常
         return "index";
     }
 }
