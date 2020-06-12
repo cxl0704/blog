@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
-
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
