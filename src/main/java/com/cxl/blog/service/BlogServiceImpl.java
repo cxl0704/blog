@@ -4,6 +4,7 @@ import com.cxl.blog.NotFoundException;
 import com.cxl.blog.dao.BlogRepository;
 import com.cxl.blog.po.Blog;
 import com.cxl.blog.po.Type;
+import com.cxl.blog.util.MarkdownUtils;
 import com.cxl.blog.util.MyBeanUtils;
 import com.cxl.blog.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -59,6 +60,19 @@ public class BlogServiceImpl implements BlogService {
                 return null;
             }
         },pageable);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.findById(id).orElse(null);
+        if (blog == null) {
+            throw new NotFoundException("该博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog,b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        return b;
     }
 
     @Override
