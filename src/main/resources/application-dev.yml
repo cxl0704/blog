@@ -1,10 +1,10 @@
 spring:
  datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/java-blog?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/java-blog?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: 12345s
-  jpa:
+    password: 12345
+ jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -15,6 +15,6 @@ logging:
   file:
     name: log/blog-dev.log
 server:
-  port: 8081
+  port: 8888
 
 
